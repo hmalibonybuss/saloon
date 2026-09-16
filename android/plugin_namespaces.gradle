@@ -1,0 +1,16 @@
+ext {
+    pluginNamespaces = [
+        'path_provider_android': 'io.flutter.plugins.pathprovider',
+        'flutter_plugin_android_lifecycle': 'io.flutter.plugins.flutter_plugin_android_lifecycle'
+    ]
+}
+
+subprojects { subproject ->
+    afterEvaluate {
+        if (pluginNamespaces.containsKey(subproject.name)) {
+            subproject.android {
+                namespace pluginNamespaces[subproject.name]
+            }
+        }
+    }
+} 
